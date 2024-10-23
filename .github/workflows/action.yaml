@@ -1,4 +1,4 @@
-name: 打包vue项目
+name: 构建镜像推送到docker
 
 on: push
 
@@ -12,12 +12,14 @@ jobs:
     steps:
     - name: clone代码
       uses: actions/checkout@v4
-    - name: 安装依赖
-      run: npm install
-    - name: 打包
-      run: npm run build
-    - name: 部署
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        branch: gh-pages
-        folder: dist
+    - name: 登录DockerHub
+      uses: docker/login-action@v3
+      with: 
+        username: ${{ secrets.DOCKER_NAME }}
+        password: ${{ secrets.DOCKER_TOKEN }}
+
+    - name: 构建并推送到DockerHub
+      uses: docker/build-push-action@v5
+      with: 
+        push: true
+        tags: yaojinfeng32/vue-app@latest
