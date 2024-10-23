@@ -3,7 +3,7 @@ name: 打包vue项目
 on: push
 
 permissions:
-  content: write
+  contents: write
 
 jobs:
   npm-build:
