@@ -1,0 +1,22 @@
+name: CI流程
+
+on:
+  push:
+    branches: main
+
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+      - name: 安装node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+      - name: 安装依赖
+        run: npm install
+      - name: 代码检查
+        run: npm run lint
+      - name: 单元测试
+        run: npm run tets:unit
