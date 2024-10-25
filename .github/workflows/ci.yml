@@ -19,4 +19,4 @@ jobs:
       - name: 代码检查
         run: npm run lint
       - name: 单元测试
-        run: npm run tets:unit
+        run: npm run test:unit
