@@ -1,4 +1,4 @@
-name: 部署到github
+name: 发布到github pages
 
 on:
   push:
@@ -16,3 +16,10 @@ jobs:
         run: npm run lint
       - name: 单元测试
         run: npm run test:unit
+      - name: 打包
+        run: npm run build
+      - name: 发布
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          ACCESS_TOKEN: ${{ secrets.PROJECT_ACCESS_TOKEN }}
+          FOLDER: dist
