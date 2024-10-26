@@ -1,11 +1,11 @@
-name: CI流程
+name: 发布版本
 
 on:
   push:
     branches: main
 
 jobs:
-  CI:
+  build-release:
     runs-on: ubuntu-latest
     steps:
       - name: 拉取代码

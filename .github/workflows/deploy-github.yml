@@ -1,4 +1,4 @@
-name: CI流程
+name: 部署到github
 
 on:
   push:
