@@ -1,4 +1,4 @@
-name: 发布到github pages
+name: 部署到github pages
 
 on:
   push:
@@ -21,5 +21,5 @@ jobs:
       - name: 发布
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          ACCESS_TOKEN: ${{ secrets.PROJECT_ACCESS_TOKEN }}
-          FOLDER: dist
+          token: ${{ secrets.PROJECT_ACCESS_TOKEN }}
+          folder: dist
