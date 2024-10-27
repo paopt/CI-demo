@@ -24,6 +24,6 @@ jobs:
           SOURCE: "dist/"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: 'root'
-          TARGET: '/var/www/vue-demo'
+          TARGET: '/var/www/cicd-web'
           EXCLUDE: "/dist/, /node_modules/"
 
