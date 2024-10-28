@@ -35,12 +35,14 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: npm install
+        run: npm install
       - name: Cache node modules
         uses: actions/cache@v3
         env:
           cache-name: cache-node-modules
         with:
-          path: ~/node_modules
+          path: ~/.npm
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
