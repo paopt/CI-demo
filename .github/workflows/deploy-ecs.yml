@@ -26,4 +26,5 @@ jobs:
           REMOTE_USER: 'root'
           TARGET: '/var/www/cicd-web'
           EXCLUDE: "/dist/, /node_modules/"
+          SCRIPT_AFTER: cd /etc/nginx && ls
 
