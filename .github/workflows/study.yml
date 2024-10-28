@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: GitHub Actions study
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 
@@ -14,8 +14,6 @@ jobs:
         with:
         # 此矩阵将使用不同版本的 Node.js 多次运行作业：
           node-version: ${{ matrix.node }}
-      - name: node 执行
-        run: node test.js
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
@@ -36,3 +34,5 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
+      - name: node 执行
+        run: node ./test.js
