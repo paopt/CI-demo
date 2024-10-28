@@ -5,13 +5,17 @@ on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
+    # 使用矩阵策略在某个语言的多个版本或多个操作系统上测试代码
     strategy:
       matrix:
         node: [14, 16]
     steps:
       - uses: actions/setup-node@v4
         with:
+        # 此矩阵将使用不同版本的 Node.js 多次运行作业：
           node-version: ${{ matrix.node }}
+      - name: node 执行
+        run: node test.js
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
@@ -23,3 +27,12 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Cache node modules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
