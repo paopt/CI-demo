@@ -1,16 +1,16 @@
 name: GitHub Actions study
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-# on: [push]
+on: [push]
 
-on:
-  workflow_dispatch:
-    inputs:
-      chosen-os:
-        required: true
-        type: choice
-        options:
-        - Ubuntu
-        - macOS
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       chosen-os:
+#         required: true
+#         type: choice
+#         options:
+#         - Ubuntu
+#         - macOS
 
 jobs:
   Explore-GitHub-Actions:
